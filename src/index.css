@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+html {
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    color: #475569;
+}
+
+a:hover {
+    color: #482ff7;
+}
+
+.container {
+    margin: 0 100px;
+    margin-top: 10px;
+}
+
+.header {
+    border-bottom: 1px solid #E2E8F0;
+    position: sticky;
+}
+
+.navbar {
+    display: flex;
+    position: sticky;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 1.5rem;
+}
+
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3 ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 50px;
+}
+
+.nav-link {
+    font-size: 15px;
+    font-weight: 400;
+    color: #475569;
+}
+
+.nav-link:hover {
+    color: #482ff7;
+}
+
+.nav-logo {
+    font-size: 30px;
+    font-weight: 500;
+    color: #482ff7;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #E2E8F0;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav .nav-link {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 22px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    font-size: 36px;
+    margin-right: 50px;
+}
+
+.home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-right {
+    font-size: 20px;
+    margin: 50px;
+}
+
+.home .btn {
+    margin-top: 10px;
+    width: 100px;
+    font-size: 16px;
+}
+
+.contests {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   gap: 10px;
+   margin-bottom: 10px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    padding: 30px;
+    margin: 0 0.8rem;
+    color: #333;
+    line-height: 20px;
+}
+
+.Contest-heading {
+    text-align: left;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.Contest-text {
+   text-align: left;
+   font-size: 15px;
+   margin: 10px 0;
+   color: #787A91;
+}
+
+.ongoing-contest, .upcoming-contest {
+    margin: 30px 5px 30px 15px;
+    font-size: 25px;
+}
+
+.btn {
+   background-color: #4361ee;
+   border-radius: 3px;
+   color: #fff;
+   cursor: pointer;
+   padding: 10px; 
+   font-size: 15px;
+   text-decoration: none;
+}
+
+button.btn a {
+    color: #fff;
+}
+
+
+.footer {
+    text-align: center;
+    background-color: #E2E8F0;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 20px;
+    color: #333;
+    margin-top: 140px;
+}
+
+@media (max-width: 1200px) {
+    .nav-menu {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    /* .home {
+        flex-direction: column;
+    } */
+}
+
+@media (max-width: 958px) {
+    .contests {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .card .btn {
+        font-size: 15px;
+    }
+    .nav-logo {
+        font-size: 25px;
+    }
+    .code {
+        width: 300px;
+    }
+    .home .matter {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 759px) {
+    .home {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 685px) {
+    .contests {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-logo {
+        font-size: 20px;
+    }
+    .container {
+        margin: 10px 60px;
+    }
+}
+
