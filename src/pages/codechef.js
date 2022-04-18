@@ -2,23 +2,20 @@ import React from "react";
 import { useEffect, useState } from "react";
 const Codechef = (codechef) => {
   let contests = codechef.codechef;
-  const [upcontest, setUpContest] = useState(true);
-  function upcontestsSet() {
+  function upcontest() {
      for (let i = 0; i < contests.length; ++i) {
-       if (contests.status === "CODING") {
-         setUpContest(true);
+       if (contests[i].status === "CODING") {
+         return true;
        }
      }
+     return false;
   }
-  useEffect(() => {
-    upcontestsSet();
-  }, []);
 
   return (
     <div className="container">
-      {upcontest && <h1 className="ongoing-contest">Ongoing Contests</h1>}
+      {upcontest() && <h1 className="ongoing-contest">Ongoing Contests</h1>}
       <div className="contests">
-        {upcontest &&
+        {upcontest() &&
           contests.map((contest) => {
             if (contest.status === "CODING") {
               return (
