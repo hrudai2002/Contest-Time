@@ -1,19 +1,40 @@
 import React from "react";
-import { useEffect, useState } from "react";
 const Hackerrank = (hackerrank) => {
   let contests = hackerrank.hackerrank;
   function upcontest() {
     for (let i = 0; i < contests.length; ++i) {
       if (contests[i].status === "CODING") {
-         return true;
+        return true;
       }
     }
     return false;
   }
- 
+
+  const checkUpcoming = () => {
+    for (let i = 0; i < contests.length; ++i) {
+      if (contests[i].status === "BEFORE") {
+        return true;
+      }
+    }
+    return false;
+  };
+
   return (
     <div className="container">
-      {upcontest() && <h1 className="ongoing-contest">Ongoing Contests</h1>}
+      {upcontest() && (
+        <h1 className="ongoing-contest">
+          Ongoing Contests{" "}
+          <button className="btn">
+            <a
+              href="https://www.timeanddate.com/worldclock/converter.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Time Zone
+            </a>
+          </button>
+        </h1>
+      )}
       <div className="contests">
         {upcontest() &&
           contests.map((contest) => {
@@ -25,8 +46,7 @@ const Hackerrank = (hackerrank) => {
                   <h3 className="Contest-text">
                     {contest.start_time.slice(0, 10) +
                       " " +
-                      contest.start_time.slice(11, 19) 
-                      }
+                      contest.start_time.slice(11, 19)}
                   </h3>
                   <h3 className="Contest-text">End Time :</h3>
                   <h3 className="Contest-text">
@@ -44,36 +64,50 @@ const Hackerrank = (hackerrank) => {
             }
           })}
       </div>
-      <h1 className="upcoming-contest">Upcoming Contests</h1>
-      <div className="contests">
-        {contests.map((contest) => {
-          if (contest.status === "BEFORE") {
-            return (
-              <div className="card">
-                <h1 className="Contest-heading">{contest.name}</h1>
-                <h3 className="Contest-text">Start Time :</h3>
-                <h3 className="Contest-text">
-                  {contest.start_time.slice(0, 10) +
-                    " " +
-                    contest.start_time.slice(11, 19) 
-                    }
-                </h3>
-                <h3 className="Contest-text">End Time :</h3>
-                <h3 className="Contest-text">
-                  {contest.end_time.slice(0, 10) +
-                    " " +
-                    contest.end_time.slice(11, 19)}
-                </h3>
-                <div className="contestbutton">
-                  <button className="btn">
-                    <a href={contest.url}>Compete Here</a>
-                  </button>
+      <h1 className="upcoming-contest">
+        Upcoming Contests{" "}
+        <button className="btn">
+          <a
+            href="https://www.timeanddate.com/worldclock/converter.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Time Zone
+          </a>
+        </button>
+      </h1>
+      {checkUpcoming() ? (
+        <div className="contests">
+          {contests.map((contest) => {
+            if (contest.status === "BEFORE") {
+              return (
+                <div className="card">
+                  <h1 className="Contest-heading">{contest.name}</h1>
+                  <h3 className="Contest-text">Start Time :</h3>
+                  <h3 className="Contest-text">
+                    {contest.start_time.slice(0, 10) +
+                      " " +
+                      contest.start_time.slice(11, 19)}
+                  </h3>
+                  <h3 className="Contest-text">End Time :</h3>
+                  <h3 className="Contest-text">
+                    {contest.end_time.slice(0, 10) +
+                      " " +
+                      contest.end_time.slice(11, 19)}
+                  </h3>
+                  <div className="contestbutton">
+                    <button className="btn">
+                      <a href={contest.url}>Compete Here</a>
+                    </button>
+                  </div>
                 </div>
-              </div>
-            );
-          }
-        })}
-      </div>
+              );
+            }
+          })}
+        </div>
+      ) : (
+        <h1 className="upcoming-contest"> No Contests ... :(</h1>
+      )}
     </div>
   );
 };

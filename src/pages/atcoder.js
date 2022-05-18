@@ -1,5 +1,4 @@
 import React from "react";
-import { useEffect, useState } from "react";
 const Atcoder = (atcoder) => {
    let contests = atcoder.atcoder;
    function upcontest() {
@@ -13,7 +12,20 @@ const Atcoder = (atcoder) => {
    
    return (
      <div className="container">
-       {upcontest() && <h1 className="ongoing-contest">Ongoing Contests</h1>}
+       {upcontest() && (
+         <h1 className="ongoing-contest">
+           Ongoing Contests{" "}
+           <button className="btn">
+             <a
+               href="https://www.timeanddate.com/worldclock/converter.html"
+               target="_blank"
+               rel="noopener noreferrer"
+             >
+               Time Zone
+             </a>
+           </button>
+         </h1>
+       )}
        <div className="contests">
          {upcontest() &&
            contests.map((contest) => {
@@ -32,7 +44,8 @@ const Atcoder = (atcoder) => {
                    <h3 className="Contest-text">
                      {contest.end_time.slice(0, 10) +
                        " " +
-                       contest.end_time.slice(11, 19)}
+                       contest.end_time.slice(11, 19) +
+                       " UTC"}
                    </h3>
                    <div className="contestbutton">
                      <button className="btn">
@@ -44,7 +57,18 @@ const Atcoder = (atcoder) => {
              }
            })}
        </div>
-       <h1 className="upcoming-contest">Upcoming Contests</h1>
+       <h1 className="upcoming-contest">
+         Upcoming Contests{" "}
+         <button className="btn">
+           <a
+             href="https://www.timeanddate.com/worldclock/converter.html"
+             target="_blank"
+             rel="noopener noreferrer"
+           >
+             Time Zone
+           </a>
+         </button>
+       </h1>
        <div className="contests">
          {contests.map((contest) => {
            if (contest.status === "BEFORE") {
@@ -62,7 +86,8 @@ const Atcoder = (atcoder) => {
                  <h3 className="Contest-text">
                    {contest.end_time.slice(0, 10) +
                      " " +
-                     contest.end_time.slice(11, 19)}
+                     contest.end_time.slice(11, 19) +
+                     " UTC"}
                  </h3>
                  <div className="contestbutton">
                    <button className="btn">
